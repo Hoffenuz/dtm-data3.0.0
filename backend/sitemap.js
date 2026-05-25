@@ -1,9 +1,11 @@
-import db from './db.js';
+import supabaseAdmin from './supabase.js';
 import { DOMAIN, SITE_URL, STATIC_ROUTES } from '../shared/site.constants.js';
 
-export function buildSitemapXml() {
-  const universities = db.prepare('SELECT slug FROM universities ORDER BY is_top DESC, name').all();
-  const news = db.prepare('SELECT slug, published_at FROM news ORDER BY published_at DESC').all();
+export async function buildSitemapXml() {
+  const [{ data: universities }, { data: news }] = await Promise.all([
+    supabaseAdmin.from('universities').select('slug').order('is_top', { ascending: false }),
+    supabaseAdmin.from('news').select('slug, published_at').order('published_at', { ascending: false }),
+  ]);
 
   const urls = [
     ...STATIC_ROUTES.map(({ path, priority, changefreq }) => ({
@@ -11,17 +13,21 @@ export function buildSitemapXml() {
       priority,
       changefreq,
     })),
-    ...universities.map((u) => ({
+    ...(universities || []).map((u) => ({
       loc: `${SITE_URL}/universities/${u.slug}`,
       priority: '0.7',
       changefreq: 'weekly',
     })),
-    ...news.map((n) => ({
+    ...(news || []).map((n) => ({
       loc: `${SITE_URL}/news/${n.slug}`,
       priority: '0.6',
       changefreq: 'monthly',
       lastmod: n.published_at,
     })),
+    { loc: `${SITE_URL}/contact`, priority: '0.6', changefreq: 'monthly' },
+    { loc: `${SITE_URL}/tests`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${SITE_URL}/login`, priority: '0.4', changefreq: 'monthly' },
+    { loc: `${SITE_URL}/register`, priority: '0.4', changefreq: 'monthly' },
   ];
 
   const entries = urls

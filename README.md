@@ -11,12 +11,15 @@ O'zbekiston OTMlari, DTM kirish ballari va qabul ma'lumotlari portali.
 - Ball kalkulyatori — DTM test natijalari
 - Yangiliklar — qabul, grant, imtihon xabarlari
 - Kasbga yo'naltirish testi
-- Xususiy va xorijiy OTMlar
+- DTM amaliy testlar (login bilan natija saqlanadi)
+- Ro'yxatdan o'tish / kirish (Supabase Auth)
+- Aloqa formasi
 
 ## Texnologiyalar
 
 - **Frontend:** React 19, Vite, Tailwind CSS
-- **Backend:** Node.js, Express, SQLite
+- **Backend:** Node.js, Express
+- **Ma'lumotlar bazasi:** Supabase (PostgreSQL)
 
 ## O'rnatish (development)
 
@@ -24,7 +27,12 @@ O'zbekiston OTMlari, DTM kirish ballari va qabul ma'lumotlari portali.
 git clone https://github.com/YOUR_USERNAME/dtmdata.git
 cd dtmdata
 npm run install:all
-npm run seed
+
+# Muhit o'zgaruvchilari
+cp .env.example backend/.env
+cp frontend/.env.example frontend/.env
+# backend/.env va frontend/.env ichidagi Supabase kalitlarini to'ldiring
+
 npm run dev
 ```
 
@@ -35,38 +43,40 @@ npm run dev
 
 ```bash
 npm run install:all
-cp .env.example .env          # SITE_URL ni o'zgartiring
+cp .env.example backend/.env
+cp frontend/.env.example frontend/.env
+# Production kalitlarini kiriting, NODE_ENV=production
+
 npm run start:prod
 ```
 
 Server `frontend/dist` ni avtomatik xizmat qiladi va API `/api` ostida ishlaydi.
 
-**Port:** `PORT=3001` (`.env` orqali)
+**Port:** `PORT=3001` (`backend/.env` orqali)
 
-## GitHub ga yuklash
+## Muhit o'zgaruvchilari
 
-Repoda `node_modules` yo'q — `.gitignore` ularni chiqarib tashlaydi. Clone qilgach `npm run install:all` bajaring.
+| Fayl | O'zgaruvchilar |
+|------|----------------|
+| `backend/.env` | `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `PORT`, `NODE_ENV` |
+| `frontend/.env` | `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_SITE_URL` |
 
-```bash
-git init
-git add .
-git commit -m "Initial commit: dtmdata portal"
-git remote add origin https://github.com/YOUR_USERNAME/dtmdata.git
-git push -u origin main
-```
+Namuna fayllar: `.env.example`, `frontend/.env.example`
+
+## Aloqa (saytda ko'rsatiladi)
+
+- Telegram: [@avtotestu_ad](https://t.me/avtotestu_ad)
+- Telefon: +998-993333177
+
+Sozlamalar: `shared/site.constants.js`
 
 ## Domen konfiguratsiyasi
 
-Barcha domen sozlamalari `shared/site.constants.js` faylida markazlashtirilgan:
-
 ```js
+// shared/site.constants.js
 DOMAIN = 'dtmdata.uz'
 SITE_URL = 'https://dtmdata.uz'
 ```
-
-Build vaqtida `sitemap.xml` / `robots.txt` avtomatik yangilanadi (42+ OTM va yangiliklar URL lari bilan).
-
-Production da server `/sitemap.xml` va `/robots.txt` ni dinamik ham xizmat qiladi.
 
 ## SEO fayllar
 
@@ -76,12 +86,11 @@ Production da server `/sitemap.xml` va `/robots.txt` ni dinamik ham xizmat qilad
 | `sitemap.xml` | `/sitemap.xml` |
 | `manifest.json` | `/manifest.json` |
 
-Domen o'zgarganda `frontend/public/sitemap.xml`, `robots.txt` va `VITE_SITE_URL` ni yangilang.
-
 ## API
 
 | Method | Endpoint |
 |--------|----------|
+| GET | `/api/health` |
 | GET | `/api/regions` |
 | GET | `/api/universities` |
 | GET | `/api/universities/:slug` |
@@ -90,6 +99,9 @@ Domen o'zgarganda `frontend/public/sitemap.xml`, `robots.txt` va `VITE_SITE_URL`
 | GET | `/api/news` |
 | GET | `/api/career-test` |
 | POST | `/api/career-test/submit` |
+| GET | `/api/practice-tests` |
+| POST | `/api/contact` |
+| GET/PUT | `/api/profile` (auth) |
 
 ## Litsenziya
 

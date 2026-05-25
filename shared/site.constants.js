@@ -2,7 +2,10 @@
 export const DOMAIN = 'dtmdata.uz';
 export const SITE_URL = `https://${DOMAIN}`;
 export const SITE_NAME = 'dtmdata';
-export const SITE_EMAIL = `info@${DOMAIN}`;
+export const SITE_PHONE = '+998-993333177';
+export const SITE_PHONE_TEL = '+998993333177';
+export const SITE_TELEGRAM = 'https://t.me/avtotestu_ad';
+export const SITE_TELEGRAM_HANDLE = '@avtotestu_ad';
 
 export const SEO = {
   title: `${SITE_NAME} — OTMlar, DTM kirish ballari va qabul ma'lumotlari`,

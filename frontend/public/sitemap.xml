@@ -51,77 +51,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/adti</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/anddu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/buxdu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/fardu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/inha</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/jidu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/qordu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/namdu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/navmtu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://dtmdata.uz/universities/ozmu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/qardu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/samdtu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/samdu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tatu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tdiu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -131,7 +61,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/tmi</loc>
+    <loc>https://dtmdata.uz/universities/tatu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -141,47 +71,67 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dtmdata.uz/universities/tmi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dtmdata.uz/universities/jidu</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dtmdata.uz/universities/inha</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dtmdata.uz/universities/tdiu</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dtmdata.uz/universities/urdu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/akfa</loc>
+    <loc>https://dtmdata.uz/universities/namdu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/amity</loc>
+    <loc>https://dtmdata.uz/universities/buxdu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/buxmti</loc>
+    <loc>https://dtmdata.uz/universities/qardu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/cambridge</loc>
+    <loc>https://dtmdata.uz/universities/samdu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/farpi</loc>
+    <loc>https://dtmdata.uz/universities/samdtu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/guldu</loc>
+    <loc>https://dtmdata.uz/universities/fardu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/jizdpu</loc>
+    <loc>https://dtmdata.uz/universities/anddu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/jizpi</loc>
+    <loc>https://dtmdata.uz/universities/adti</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -191,72 +141,12 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/universities/nammqi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/navdpi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/nukdpi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/qarmii</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/samdaqu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/samdchti</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tmc</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/termizdu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/termizmti</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tdpu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tdtu</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/tta-urganch</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dtmdata.uz/universities/urdpi</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://dtmdata.uz/universities/webster</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dtmdata.uz/universities/akfa</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -279,21 +169,23 @@
     <lastmod>2025-05-10</lastmod>
   </url>
   <url>
-    <loc>https://dtmdata.uz/news/xususiy-qabul</loc>
+    <loc>https://dtmdata.uz/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2025-05-05</lastmod>
   </url>
   <url>
-    <loc>https://dtmdata.uz/news/xorazm-otmlar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2025-05-01</lastmod>
+    <loc>https://dtmdata.uz/tests</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dtmdata.uz/news/test-yangilandi</loc>
+    <loc>https://dtmdata.uz/login</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2025-04-28</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://dtmdata.uz/register</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

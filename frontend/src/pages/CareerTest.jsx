@@ -31,7 +31,7 @@ export default function CareerTest() {
     } else {
       try {
         const res = await api.submitCareerTest(newAnswers);
-        setResult(res);
+        setResult({ ...res, saved: res.saved });
       } catch (err) {
         console.error(err);
       }
@@ -55,7 +55,12 @@ export default function CareerTest() {
             <div className="text-5xl mb-4">🎯</div>
             <h1 className="heading-2 mb-4">Sizning natijangiz</h1>
             <p className="text-2xl font-semibold text-primary mb-4">{rec.field}</p>
-            <p className="body-2 mb-6">{rec.description}</p>
+            <p className="body-2 mb-4">{rec.description}</p>
+            {result.saved && (
+              <p className="text-sm text-success bg-primary/10 px-4 py-2 rounded-lg mb-4">
+                Natija hisobingizda saqlandi
+              </p>
+            )}
 
             <div className="text-left bg-white rounded-lg p-6 card-shadow mb-6">
               <h3 className="font-semibold mb-3">Tavsiya etilgan yo&apos;nalishlar:</h3>

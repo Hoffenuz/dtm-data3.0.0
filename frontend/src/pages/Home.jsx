@@ -49,9 +49,17 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="bg-silver relative overflow-hidden">
-        <div className="section-container py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+          <div className="absolute -right-20 -top-24 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+        </div>
+
+        <div className="section-container relative py-16 lg:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="order-2 lg:order-1">
+              <span className="mb-6 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                Abituriyentlar uchun yagona portal
+              </span>
               <h1 className="heading-1 mb-4">
                 Oliy ta&apos;lim haqida{' '}
                 <span className="text-primary">to&apos;liq ma&apos;lumot</span>
@@ -59,23 +67,58 @@ export default function Home() {
               <p className="body-1 mb-8 max-w-lg">
                 Abituriyentlar va ota-onalar uchun OTMlar, kirish ballari va qabul jarayonlari haqida yagona portal.
               </p>
-              <Link to="/universities" className="btn-primary">
-                OTMlarni ko&apos;rish
-              </Link>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/universities" className="btn-primary">
+                  OTMlarni ko&apos;rish
+                </Link>
+                <Link to="/calculator" className="btn-secondary">
+                  Ball kalkulyatori
+                </Link>
+              </div>
             </div>
-            <div className="flex justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=500&fit=crop"
-                alt="Universitet"
-                className="rounded-lg shadow-lg max-w-md w-full object-cover"
-              />
+
+            <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+              <div className="relative w-full max-w-lg">
+                <div
+                  className="absolute -inset-3 rotate-2 rounded-2xl bg-gradient-to-br from-primary/25 to-primary/5"
+                  aria-hidden="true"
+                />
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/80">
+                  <img
+                    src="/images/oqish.webp"
+                    alt="O'qish — oliy ta'lim va universitet hayoti"
+                    className="aspect-[4/3] w-full object-cover object-center"
+                    width={640}
+                    height={480}
+                    fetchPriority="high"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-secondary/50 via-secondary/5 to-transparent"
+                    aria-hidden="true"
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-white/95 p-4 backdrop-blur-sm card-shadow">
+                    <p className="text-sm font-semibold text-secondary">2026-yil qabul mavsumi</p>
+                    <p className="mt-1 text-xs text-grey">
+                      OTMlar, kirish ballari va DTM testlari — barchasi {SITE.name} da
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="absolute -bottom-4 -right-4 hidden rounded-xl bg-primary px-4 py-3 text-white shadow-lg sm:block"
+                  aria-hidden="true"
+                >
+                  <p className="text-2xl font-bold leading-none">{stats?.universities || '150'}+</p>
+                  <p className="text-xs font-medium opacity-90">OTMlar</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex justify-center gap-2 pb-6">
-          <span className="w-2 h-2 rounded-full bg-primary" />
-          <span className="w-2 h-2 rounded-full bg-grey-blue" />
-          <span className="w-2 h-2 rounded-full bg-grey-blue" />
+
+        <div className="relative flex justify-center gap-2 pb-6" aria-hidden="true">
+          <span className="h-2 w-2 rounded-full bg-primary" />
+          <span className="h-2 w-2 rounded-full bg-grey-blue" />
+          <span className="h-2 w-2 rounded-full bg-grey-blue" />
         </div>
       </section>
 

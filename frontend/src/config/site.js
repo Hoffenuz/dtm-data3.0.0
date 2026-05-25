@@ -1,4 +1,13 @@
-import { DOMAIN, SITE_EMAIL, SITE_NAME, SITE_URL, SEO } from '../../../shared/site.constants.js';
+import {
+  DOMAIN,
+  SITE_NAME,
+  SITE_PHONE,
+  SITE_PHONE_TEL,
+  SITE_TELEGRAM,
+  SITE_TELEGRAM_HANDLE,
+  SITE_URL,
+  SEO,
+} from '../../../shared/site.constants.js';
 
 export const SITE = {
   name: SITE_NAME,
@@ -7,7 +16,9 @@ export const SITE = {
   description: SEO.description,
   keywords: SEO.keywords,
   url: import.meta.env.VITE_SITE_URL || SITE_URL,
-  email: SITE_EMAIL,
-  phone: '+998 71 123 45 67',
+  phone: SITE_PHONE,
+  phoneTel: SITE_PHONE_TEL,
+  telegram: SITE_TELEGRAM,
+  telegramHandle: SITE_TELEGRAM_HANDLE,
   locale: 'uz_UZ',
 };

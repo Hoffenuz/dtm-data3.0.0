@@ -7,15 +7,12 @@ frontend/node_modules/
 frontend/dist/
 dist/
 
-# Database (seed on deploy)
-backend/otm.db
-backend/otm.db-shm
-backend/otm.db-wal
-
 # Environment
 .env
 .env.local
-.env.*.local
+backend/.env
+frontend/.env
+frontend/.env.local
 
 # Logs
 *.log

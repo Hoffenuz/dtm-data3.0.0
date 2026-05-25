@@ -38,7 +38,8 @@ export default function Footer() {
                 <li><Link to="/universities" className="hover:text-primary transition-colors">OTMlar</Link></li>
                 <li><Link to="/scores" className="hover:text-primary transition-colors">Kirish ballari</Link></li>
                 <li><Link to="/calculator" className="hover:text-primary transition-colors">Kalkulyator</Link></li>
-                <li><Link to="/news" className="hover:text-primary transition-colors">Yangiliklar</Link></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Aloqa</Link></li>
+                <li><Link to="/tests" className="hover:text-primary transition-colors">DTM testlar</Link></li>
               </ul>
             </div>
 
@@ -54,8 +55,16 @@ export default function Footer() {
             <div>
               <h4 className="font-semibold mb-4">Aloqa</h4>
               <ul className="space-y-2 text-sm text-grey-blue">
-                <li><a href={`mailto:${SITE.email}`} className="hover:text-primary">{SITE.email}</a></li>
-                <li>{SITE.phone}</li>
+                <li>
+                  <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                    {SITE.telegramHandle}
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:${SITE.phoneTel}`} className="hover:text-primary transition-colors">
+                    {SITE.phone}
+                  </a>
+                </li>
                 <li>Toshkent, O&apos;zbekiston</li>
               </ul>
             </div>
