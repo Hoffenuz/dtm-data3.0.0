@@ -1,0 +1,120 @@
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { api } from '../api';
+import { useSeo } from '../hooks/useSeo';
+
+const formLabels = {
+  kunduzgi: 'Kunduzgi',
+  sirtqi: 'Sirtqi',
+  kechki: 'Kechki',
+  masofaviy: 'Masofaviy',
+};
+
+const langLabels = {
+  uzbek: "O'zbek",
+  rus: 'Rus',
+  qoraqalpoq: 'Qoraqalpoq',
+  ingliz: 'Ingliz',
+};
+
+const typeLabels = {
+  davlat: 'Davlat OTM',
+  xususiy: 'Xususiy OTM',
+  xorijiy: 'Xorijiy filial',
+};
+
+export default function UniversityDetail() {
+  const { slug } = useParams();
+  const [uni, setUni] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.getUniversity(slug)
+      .then(setUni)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  useSeo({
+    title: uni?.name,
+    description: uni?.description,
+    path: uni ? `/universities/${slug}` : '/universities',
+  });
+
+  if (loading) return <div className="section-container py-20 text-center text-grey">Yuklanmoqda...</div>;
+  if (!uni) return <div className="section-container py-20 text-center text-grey">OTM topilmadi</div>;
+
+  return (
+    <div className="py-12">
+      <div className="section-container">
+        <Link to="/universities" className="text-primary text-sm mb-6 inline-flex items-center gap-1 hover:underline">
+          ← OTMlar ro&apos;yxati
+        </Link>
+
+        <div className="bg-silver rounded-xl p-8 mb-10">
+          <div className="flex flex-wrap gap-3 mb-4">
+            <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary text-white">
+              {typeLabels[uni.type]}
+            </span>
+            <span className="text-xs font-medium px-3 py-1 rounded-full bg-white text-grey">
+              {uni.region_name}
+            </span>
+            {uni.is_top === 1 && (
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-warning/20 text-secondary">Top OTM</span>
+            )}
+          </div>
+          <h1 className="heading-2 mb-2">{uni.name}</h1>
+          <p className="body-2 mb-4">{uni.description}</p>
+          {uni.website && (
+            <a href={uni.website} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+              Rasmiy sayt →
+            </a>
+          )}
+        </div>
+
+        <h2 className="heading-3 mb-6">Yo&apos;nalishlar va kirish ballari</h2>
+
+        {uni.directions.length === 0 ? (
+          <p className="text-grey">Yo&apos;nalishlar ma&apos;lumoti hozircha mavjud emas.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-secondary text-white">
+                  <th className="px-4 py-3 text-sm font-medium">Yo&apos;nalish</th>
+                  <th className="px-4 py-3 text-sm font-medium">Fakultet</th>
+                  <th className="px-4 py-3 text-sm font-medium">Ta&apos;lim shakli</th>
+                  <th className="px-4 py-3 text-sm font-medium">Til</th>
+                  <th className="px-4 py-3 text-sm font-medium">Grant</th>
+                  <th className="px-4 py-3 text-sm font-medium">Kontrakt</th>
+                  <th className="px-4 py-3 text-sm font-medium">Kvota</th>
+                </tr>
+              </thead>
+              <tbody>
+                {uni.directions.map((d) => (
+                  <tr key={d.id} className="border-b border-grey-blue/30 hover:bg-silver/50">
+                    <td className="px-4 py-3 text-sm font-medium">{d.name}</td>
+                    <td className="px-4 py-3 text-sm text-grey">{d.faculty}</td>
+                    <td className="px-4 py-3 text-sm">{formLabels[d.education_form]}</td>
+                    <td className="px-4 py-3 text-sm">{langLabels[d.education_language]}</td>
+                    <td className="px-4 py-3 text-sm font-semibold text-primary">
+                      {d.grant_score ?? '—'}
+                    </td>
+                    <td className="px-4 py-3 text-sm font-semibold text-info">
+                      {d.contract_score ?? '—'}
+                    </td>
+                    <td className="px-4 py-3 text-sm">{d.quota}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        <p className="text-xs text-grey-light mt-4">
+          * Ballar 2024-yil o&apos;rtacha ko&apos;rsatkichlari (namuna). Har yili BMB saytidan yangilanadi.
+        </p>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,20 @@
+{
+  "name": "dtmdata — OTM ma'lumotlari",
+  "short_name": "dtmdata",
+  "description": "dtmdata.uz — O'zbekiston OTMlari, DTM kirish ballari va qabul ma'lumotlari",
+  "start_url": "https://dtmdata.uz/",
+  "scope": "https://dtmdata.uz/",
+  "id": "https://dtmdata.uz/",
+  "display": "standalone",
+  "background_color": "#F5F7FA",
+  "theme_color": "#28CB8B",
+  "lang": "uz",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

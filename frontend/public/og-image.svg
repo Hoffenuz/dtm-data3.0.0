@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F5F7FA"/>
+  <rect x="80" y="80" width="80" height="80" rx="12" fill="#28CB8B"/>
+  <text x="120" y="135" text-anchor="middle" fill="white" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="700">DTM</text>
+  <text x="200" y="140" fill="#263238" font-family="Inter,system-ui,sans-serif" font-size="72" font-weight="700">dtm</text>
+  <text x="430" y="140" fill="#28CB8B" font-family="Inter,system-ui,sans-serif" font-size="72" font-weight="700">data</text>
+  <text x="80" y="240" fill="#717171" font-family="Inter,system-ui,sans-serif" font-size="36">OTMlar · Kirish ballari · Qabul ma'lumotlari</text>
+</svg>

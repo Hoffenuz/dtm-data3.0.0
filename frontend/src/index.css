@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-secondary antialiased;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px];
+  }
+
+  .heading-1 {
+    @apply text-4xl sm:text-5xl lg:text-[64px] lg:leading-[76px] font-semibold text-secondary;
+  }
+
+  .heading-2 {
+    @apply text-2xl sm:text-3xl lg:text-[36px] lg:leading-[44px] font-semibold text-secondary;
+  }
+
+  .heading-3 {
+    @apply text-xl sm:text-2xl lg:text-[28px] lg:leading-[36px] font-semibold text-secondary;
+  }
+
+  .heading-4 {
+    @apply text-lg sm:text-xl font-semibold text-secondary;
+  }
+
+  .body-1 {
+    @apply text-base lg:text-lg leading-7 text-grey;
+  }
+
+  .body-2 {
+    @apply text-sm lg:text-base leading-6 text-grey;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded text-sm
+           hover:bg-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-medium rounded text-sm
+           hover:bg-primary hover:text-white transition-colors;
+  }
+
+  .card-shadow {
+    box-shadow: 0 2px 4px rgba(171, 190, 209, 0.4);
+  }
+}
