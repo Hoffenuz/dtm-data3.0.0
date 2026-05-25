@@ -1,7 +1,10 @@
 name = "dtmdata"
 compatibility_date = "2024-12-01"
 
-# React SPA — frontend/dist
+# Cloudflare Git build — build natijasi shu papkada
+pages_build_output_dir = "./frontend/dist"
+
+# Wrangler deploy — static SPA
 [assets]
 directory = "./frontend/dist"
 not_found_handling = "single-page-application"
