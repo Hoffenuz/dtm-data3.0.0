@@ -1,17 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL || '').trim();
+const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
+const hasConfig = Boolean(supabaseUrl && supabaseAnonKey);
 
-if (!supabaseUrl || !supabaseAnonKey) {
+if (!hasConfig) {
   console.error(
-    'VITE_SUPABASE_URL va VITE_SUPABASE_ANON_KEY topilmadi. Cloudflare da Build environment variables qo\'shing.',
+    'VITE_SUPABASE_URL va VITE_SUPABASE_ANON_KEY build vaqtida topilmadi. Cloudflare Pages → Settings → Environment variables → Build qiling.',
   );
 }
 
 export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'placeholder',
+  hasConfig ? supabaseUrl : 'https://placeholder.supabase.co',
+  hasConfig ? supabaseAnonKey : 'placeholder',
 );
 
 export async function getAccessToken() {

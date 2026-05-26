@@ -11,8 +11,8 @@
     "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "postinstall": "npm install --prefix backend && npm install --prefix frontend",
     "generate:seo": "npm run generate:seo --prefix backend",
-    "build": "npm run generate:seo && npm run build --prefix frontend",
-    "build:cloudflare": "npm run generate:seo && npm run build --prefix frontend",
+    "build": "npm run generate:seo && node scripts/prepare-frontend-env.mjs && npm run build --prefix frontend",
+    "build:cloudflare": "npm run generate:seo && node scripts/prepare-frontend-env.mjs && npm run build --prefix frontend",
     "start": "npm run start --prefix backend",
     "start:prod": "npm run build && npm run start"
   },
