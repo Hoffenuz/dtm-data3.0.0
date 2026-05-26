@@ -2,7 +2,8 @@ name = "dtmdata"
 compatibility_date = "2024-12-01"
 pages_build_output_dir = "./frontend/dist"
 
-# Cloudflare Pages build vaqtida Vite bundle ga kiradi (dashboard env zaxira sifatida)
+# Cloudflare Pages build vaqtida Vite bundle ga kiradi
 [vars]
 VITE_SUPABASE_URL = "https://fzvliyagiyrueyrdivek.supabase.co"
+VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6dmxpeWFnaXlydWV5cmRpdmVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3MjExOTQsImV4cCI6MjA5NTI5NzE5NH0.ElQ2zJZyBCQ2aGMXDeywvDjN7ur3ulU0hGZt9wq0tM4"
 VITE_SITE_URL = "https://dtmdata.uz"
