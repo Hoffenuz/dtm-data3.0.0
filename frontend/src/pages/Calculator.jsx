@@ -83,7 +83,7 @@ function Sidebar({
       <div className="flex gap-2 text-xs">
         <span className="flex-1 bg-info/10 text-info rounded-lg px-3 py-2 font-medium">{TOTAL_QUESTIONS} savol</span>
         <span className="flex-1 bg-primary/10 text-primary rounded-lg px-3 py-2 font-medium">{MAX_SCORE} ball</span>
-        <span className="flex-1 bg-secondary/10 text-secondary rounded-lg px-3 py-2 font-medium">3.1/2.1</span>
+        <span className="flex-1 bg-secondary/10 text-secondary rounded-lg px-3 py-2 font-medium">1.1/3.1/2.1</span>
       </div>
 
       {(primarySubject || pendingPrimary) && (
@@ -285,19 +285,29 @@ export default function Calculator() {
           <div className="bg-white rounded-2xl p-6 card-shadow">
             <h3 className="font-semibold text-secondary mb-4">Kiritilgan natijalar</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
-              {MANDATORY_SUBJECTS.map((s) => (
-                <div key={s.key} className="flex justify-between bg-silver rounded-lg px-4 py-3">
-                  <span>{s.label}</span>
-                  <span className="font-medium">{mandatoryAnswers[s.key]} / {s.total}</span>
-                </div>
-              ))}
+              {MANDATORY_SUBJECTS.map((s) => {
+                const correct = Number(mandatoryAnswers[s.key]) || 0;
+                const points = Math.round(correct * s.pointsPerCorrect * 10) / 10;
+                return (
+                  <div key={s.key} className="flex justify-between bg-silver rounded-lg px-4 py-3">
+                    <span>{s.label} <span className="text-grey text-xs">(1.1)</span></span>
+                    <span className="font-medium">{correct}/{s.total} · {points} ball</span>
+                  </div>
+                );
+              })}
               <div className="flex justify-between bg-silver rounded-lg px-4 py-3">
-                <span>{primarySubject}</span>
-                <span className="font-medium">{profileAnswers[primarySubject]} / {PROFILE_QUESTIONS}</span>
+                <span>{primarySubject} <span className="text-grey text-xs">(1-fan, 3.1)</span></span>
+                <span className="font-medium">
+                  {profileAnswers[primarySubject]}/{PROFILE_QUESTIONS} ·{' '}
+                  {Math.round(Number(profileAnswers[primarySubject]) * PROFILE_WEIGHTS.primary * 10) / 10} ball
+                </span>
               </div>
               <div className="flex justify-between bg-silver rounded-lg px-4 py-3">
-                <span>{secondarySubject}</span>
-                <span className="font-medium">{profileAnswers[secondarySubject]} / {PROFILE_QUESTIONS}</span>
+                <span>{secondarySubject} <span className="text-grey text-xs">(2-fan, 2.1)</span></span>
+                <span className="font-medium">
+                  {profileAnswers[secondarySubject]}/{PROFILE_QUESTIONS} ·{' '}
+                  {Math.round(Number(profileAnswers[secondarySubject]) * PROFILE_WEIGHTS.secondary * 10) / 10} ball
+                </span>
               </div>
             </div>
           </div>

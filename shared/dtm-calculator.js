@@ -1,17 +1,27 @@
-/** DTM ball kalkulyatori — 90 savol, maksimal 189 ball */
+/** DTM ball kalkulyatori — 90 savol, maksimal 189 ball
+ *  Rasmiy mezon: majburiy 1.1 ball/savol, 1-fan 3.1, 2-fan 2.1 ball/savol
+ *  33 + 93 + 63 = 189
+ */
 
 export const MAX_SCORE = 189;
 export const TOTAL_QUESTIONS = 90;
 
 export const MANDATORY_SUBJECTS = [
-  { key: 'ona_tili', label: "Ona tili", total: 10, weight: 2.0 },
-  { key: 'tarix', label: 'Tarix', total: 10, weight: 2.0 },
-  { key: 'matematika', label: 'Matematika', total: 10, weight: 2.0 },
+  { key: 'ona_tili', label: "Ona tili", total: 10, pointsPerCorrect: 1.1, maxPoints: 11 },
+  { key: 'tarix', label: 'Tarix', total: 10, pointsPerCorrect: 1.1, maxPoints: 11 },
+  { key: 'matematika', label: 'Matematika', total: 10, pointsPerCorrect: 1.1, maxPoints: 11 },
 ];
+
+export const MANDATORY_MAX = 33;
 
 export const PROFILE_WEIGHTS = {
   primary: 3.1,
   secondary: 2.1,
+};
+
+export const PROFILE_MAX = {
+  primary: 93,
+  secondary: 63,
 };
 
 export const PROFILE_QUESTIONS = 30;
@@ -26,8 +36,7 @@ export const PROFILE_SUBJECTS = [
 ];
 
 export function getMaxPossibleScore() {
-  const mandatoryMax = MANDATORY_SUBJECTS.reduce((sum, s) => sum + 100 * s.weight, 0);
-  return mandatoryMax + 100 * PROFILE_WEIGHTS.primary + 100 * PROFILE_WEIGHTS.secondary;
+  return MAX_SCORE;
 }
 
 export function computeScore({ mandatoryAnswers, primarySubject, secondarySubject, profileAnswers }) {
@@ -39,11 +48,10 @@ export function computeScore({ mandatoryAnswers, primarySubject, secondarySubjec
   }
 
   let totalScore = 0;
-  const maxPossible = getMaxPossibleScore();
 
-  for (const { key, total, weight } of MANDATORY_SUBJECTS) {
+  for (const { key, total, pointsPerCorrect } of MANDATORY_SUBJECTS) {
     const correct = Math.min(Number(mandatoryAnswers?.[key]?.correct) || 0, total);
-    totalScore += (correct / total) * 100 * weight;
+    totalScore += correct * pointsPerCorrect;
   }
 
   const primaryCorrect = Math.min(
@@ -55,10 +63,10 @@ export function computeScore({ mandatoryAnswers, primarySubject, secondarySubjec
     PROFILE_QUESTIONS,
   );
 
-  totalScore += (primaryCorrect / PROFILE_QUESTIONS) * 100 * PROFILE_WEIGHTS.primary;
-  totalScore += (secondaryCorrect / PROFILE_QUESTIONS) * 100 * PROFILE_WEIGHTS.secondary;
+  totalScore += primaryCorrect * PROFILE_WEIGHTS.primary;
+  totalScore += secondaryCorrect * PROFILE_WEIGHTS.secondary;
 
-  const normalizedScore = Math.round((totalScore / maxPossible) * MAX_SCORE * 10) / 10;
+  const normalizedScore = Math.round(totalScore * 10) / 10;
   const message =
     normalizedScore >= 140
       ? "Tabriklaymiz! Siz ko'plab OTMlarga kirish imkoniyatiga egasiz."
