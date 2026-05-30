@@ -36,32 +36,29 @@ export default function PracticeTests() {
   }, [user]);
 
   return (
-    <div className="py-12">
+    <div className="pt-2 pb-8">
       <div className="section-container">
-        <h1 className="heading-2 mb-2">DTM namuna testlari</h1>
-        <p className="body-2 mb-8">
-          Real DTM imtihoniga tayyorgarlik. Natijalar ro&apos;yxatdan o&apos;tgan foydalanuvchilarda saqlanadi.
-          {!user && (
-            <span> <Link to="/register" className="text-primary font-medium">Ro&apos;yxatdan o&apos;ting</Link> natijalarni saqlash uchun.</span>
-          )}
-        </p>
+        {!user && (
+          <p className="text-xs text-grey mb-4">
+            <Link to="/register" className="text-primary font-medium">Ro&apos;yxatdan o&apos;ting</Link>
+            {' '}— natijalar saqlanadi
+          </p>
+        )}
 
         {loading ? (
           <p className="text-grey text-center py-12">Yuklanmoqda...</p>
         ) : (
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
             {tests.map((test) => (
               <Link
                 key={test.id}
                 to={`/tests/${test.slug}`}
-                className="bg-white rounded-xl p-6 card-shadow hover:shadow-lg transition-all border-l-4 border-l-primary group"
+                className="bg-white rounded-xl p-5 card-shadow hover:shadow-lg transition-all border-l-4 border-l-primary group flex flex-col"
               >
-                <span className="text-xs font-medium px-2 py-1 rounded bg-primary/10 text-primary">
+                <p className="text-base font-semibold text-secondary mt-2 group-hover:text-primary transition-colors">
                   {subjectLabels[test.subject] || test.subject}
-                </span>
-                <h3 className="heading-4 mt-3 mb-2 group-hover:text-primary transition-colors">{test.title}</h3>
-                <p className="text-sm text-grey mb-4 line-clamp-2">{test.description}</p>
-                <div className="flex gap-4 text-xs text-grey-light">
+                </p>
+                <div className="flex gap-4 text-xs text-grey-light mt-auto pt-3">
                   <span>{test.total_questions} savol</span>
                   <span>{test.duration_minutes} daqiqa</span>
                 </div>

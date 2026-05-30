@@ -6,6 +6,15 @@ import { SITE } from '../config/site';
 
 const topUnis = ["O'zMU", 'TDYU', 'TATU', 'TTA', 'SamDU', 'UrDU', 'INHA'];
 
+const categories = {
+  qabul: 'Qabul',
+  grant: 'Grantlar',
+  imtihon: 'Imtihonlar',
+  viloyat: 'Viloyatlar',
+  test: 'Test',
+  umumiy: 'Umumiy',
+};
+
 const features = [
   {
     icon: '🎓',
@@ -18,9 +27,9 @@ const features = [
     desc: "Grant va kontrakt ballari jadval ko'rinishida — qaysi yo'nalishga kirish mumkinligini bilib oling.",
   },
   {
-    icon: '🧮',
-    title: 'Ball kalkulyatori',
-    desc: "Test natijalaringizni kiritib, qaysi universitetlarga kirish imkoniyatingiz borligini bilib oling.",
+    icon: '📰',
+    title: 'Yangiliklar',
+    desc: "Qabul kvotalari, imtihon sanalari va grantlar haqidagi tezkor xabarlar.",
   },
 ];
 
@@ -33,7 +42,7 @@ export default function Home() {
 
   useEffect(() => {
     api.getStats().then(setStats).catch(console.error);
-    api.getNews({ featured: '1' }).then(setNews).catch(console.error);
+    api.getNews().then(setNews).catch(console.error);
   }, []);
 
   const statItems = stats
@@ -73,6 +82,9 @@ export default function Home() {
                 </Link>
                 <Link to="/calculator" className="btn-secondary">
                   Ball kalkulyatori
+                </Link>
+                <Link to="/news" className="btn-secondary">
+                  Yangiliklar
                 </Link>
               </div>
             </div>
@@ -159,26 +171,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Kalkulyator */}
+      {/* Yangiliklar */}
       <section className="py-16 bg-white">
-        <div className="section-container grid lg:grid-cols-2 gap-12 items-center">
-          <img
-            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&h=400&fit=crop"
-            alt="Kalkulyator"
-            className="rounded-lg mx-auto"
-          />
+        <div className="section-container flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
           <div>
-            <h2 className="heading-2 mb-4">
-              Test ballaringiz bilan qaysi OTMga kirish mumkin?
-            </h2>
-            <p className="body-2 mb-6">
-              Abituriyent o&apos;zining majburiy va asosiy fanlardan yechgan testlari sonini kiritadi va tizim uning umumiy ballini hisoblab, shu ball bilan qaysi universitetlarga kirish imkoni borligini ro&apos;yxat qilib chiqarib beradi.
+            <h2 className="heading-2 mb-2">&ldquo;Mening OTMim&rdquo; — Yangiliklar</h2>
+            <p className="body-2 max-w-xl">
+              Qabul kvotalari, imtihon sanalari, grantlar va ta&apos;lim tizimi yangiliklari
             </p>
-            <Link to="/calculator" className="btn-primary">
-              Kalkulyatorni ochish
-            </Link>
           </div>
+          <Link to="/news" className="btn-secondary shrink-0">
+            Barcha yangiliklar
+          </Link>
         </div>
+
+        {news.length === 0 ? (
+          <div className="section-container text-center py-12 text-grey">Yangiliklar tez orada...</div>
+        ) : (
+          <div className="section-container grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {news.slice(0, 6).map((item) => (
+              <article key={item.id} className="bg-white rounded-lg overflow-hidden card-shadow hover:shadow-lg transition-shadow group">
+                <img src={item.image_url} alt={item.title} className="w-full h-48 object-cover group-hover:scale-[1.02] transition-transform duration-300" />
+                <div className="p-6">
+                  <span className="text-xs font-medium px-2 py-1 rounded bg-primary/10 text-primary">
+                    {categories[item.category] || item.category}
+                  </span>
+                  <h3 className="heading-4 mt-3 mb-2 line-clamp-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="body-3 text-sm text-grey mb-4 line-clamp-2">{item.excerpt}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-grey-light">{item.published_at}</span>
+                    <Link
+                      to={`/news/${item.slug}`}
+                      className="text-primary text-sm font-medium flex items-center gap-1 hover:underline"
+                    >
+                      O&apos;qish
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Stats */}
@@ -257,34 +293,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Yangiliklar */}
-      <section className="py-16 bg-white">
-        <div className="section-container text-center mb-12">
-          <h2 className="heading-4 mb-3">&ldquo;Mening OTMim&rdquo; — yangiliklar</h2>
-          <p className="body-2 max-w-xl mx-auto">
-            Ta&apos;lim tizimidagi yangiliklar, qabul kvotalari, imtihon sanalari va grantlar haqida tezkor xabarlar
-          </p>
-        </div>
-        <div className="section-container grid md:grid-cols-3 gap-8">
-          {news.slice(0, 3).map((item) => (
-            <article key={item.id} className="relative rounded-lg overflow-hidden card-shadow group">
-              <img src={item.image_url} alt={item.title} className="w-full h-48 object-cover" />
-              <div className="absolute bottom-0 left-0 right-0 bg-white m-4 p-4 rounded-lg card-shadow">
-                <h3 className="font-semibold text-secondary text-sm mb-3 line-clamp-2">{item.title}</h3>
-                <Link
-                  to={`/news/${item.slug}`}
-                  className="text-primary text-sm font-medium flex items-center justify-center gap-1 hover:underline"
-                >
-                  Batafsil
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { supabase } from './lib/supabase';
-import { computeScore, matchDirections } from './lib/calculator';
+import { computeScore, matchDirections, MANDATORY_SUBJECTS } from './lib/calculator';
+import { loadBallData, matchBallDirections } from './lib/subject-pairs';
 import { scoreCareerAnswers } from './lib/career';
 
 function throwIfError(error, fallback = 'Xatolik yuz berdi') {
@@ -145,12 +146,46 @@ export const api = {
     return rows;
   },
 
-  async calculateScore(subjects) {
-    if (!subjects || typeof subjects !== 'object') {
+  async calculateScore(input) {
+    if (!input || typeof input !== 'object') {
       throw new Error('Fanlar ma\'lumotini kiriting');
     }
 
-    const { totalScore, maxScore, message } = computeScore(subjects);
+    let scoreInput;
+    if (input.primarySubject && input.secondarySubject) {
+      scoreInput = input;
+    } else {
+      scoreInput = {
+        mandatoryAnswers: {},
+        profileAnswers: {},
+        primarySubject: null,
+        secondarySubject: null,
+      };
+      const profileKeys = [];
+      for (const [key, data] of Object.entries(input)) {
+        if (MANDATORY_SUBJECTS.some((m) => m.key === key)) {
+          scoreInput.mandatoryAnswers[key] = data;
+        } else {
+          profileKeys.push(key);
+          scoreInput.profileAnswers[key] = data;
+        }
+      }
+      scoreInput.primarySubject = profileKeys[0];
+      scoreInput.secondarySubject = profileKeys[1];
+    }
+
+    const { totalScore, maxScore, message } = computeScore(scoreInput);
+
+    const ballData = await loadBallData();
+    const ballMatches = matchBallDirections(ballData.rows, {
+      primaryLabel: scoreInput.primarySubject,
+      secondaryLabel: scoreInput.secondarySubject,
+      score: totalScore,
+    });
+
+    if (ballMatches.length > 0) {
+      return { totalScore, maxScore, matches: ballMatches, message };
+    }
 
     const { data: directions, error } = await supabase
       .from('directions')

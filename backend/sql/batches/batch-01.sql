@@ -1,0 +1,28 @@
+INSERT INTO universities (name, short_name, slug, region_id, type, is_top)
+VALUES
+('Abu Ali Ibn Sino Nomidagi Buxoro Davlat Tibbiyot Instituti', 'AAISNB', 'abu-ali-ibn-sino-nomidagi-buxoro-davlat-tibbiyot-instituti', (SELECT id FROM regions WHERE slug = 'buxoro'), 'davlat', false),
+('Abu Rayhon Beruniy nomidagi Urganch davlat universiteti', 'ARBNUD', 'abu-rayhon-beruniy-nomidagi-urganch-davlat-universiteti', (SELECT id FROM regions WHERE slug = 'xorazm'), 'davlat', false),
+('Ajiniyoz nomidagi Nukus davlat pedagogika instituti', 'ANNDPI', 'ajiniyoz-nomidagi-nukus-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Alisher Navoiy nomidagi Toshkent davlat o‘zbek tili va adabiyoti universiteti', 'ANNTDO', 'alisher-navoiy-nomidagi-toshkent-davlat-ozbek-tili-va-adabiyoti-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Andijon davlat chet tillari instituti', 'Andijon davlat chet tillari instituti', 'andijon-davlat-chet-tillari-instituti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Andijon davlat pedagogika instituti', 'Andijon davlat pedagogika instituti', 'andijon-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Andijon iqtisodiyot va qurilish instituti', 'Andijon iqtisodiyot va qurilish instituti', 'andijon-iqtisodiyot-va-qurilish-instituti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Andijon mashinasozlik instituti', 'Andijon mashinasozlik instituti', 'andijon-mashinasozlik-instituti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Andijon qishloq xo‘jaligi va agrotexnologiyalar instituti', 'AQXVAI', 'andijon-qishloq-xojaligi-va-agrotexnologiyalar-instituti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Berdaq nomidagi Qoraqalpoq davlat universiteti', 'Berdaq nomidagi Qoraqalpoq davlat universiteti', 'berdaq-nomidagi-qoraqalpoq-davlat-universiteti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Buxoro davlat pedagogika instituti', 'Buxoro davlat pedagogika instituti', 'buxoro-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'buxoro'), 'davlat', false),
+('Buxoro muhandislik-texnologiya instituti', 'Buxoro muhandislik-texnologiya instituti', 'buxoro-muhandislik-texnologiya-instituti', (SELECT id FROM regions WHERE slug = 'buxoro'), 'davlat', false),
+('Buxoro tabiiy resurslarni boshqarish instituti', 'Buxoro tabiiy resurslarni boshqarish instituti', 'buxoro-tabiiy-resurslarni-boshqarish-instituti', (SELECT id FROM regions WHERE slug = 'buxoro'), 'davlat', false),
+('Chirchiq davlat pedagogika universiteti', 'Chirchiq davlat pedagogika universiteti', 'chirchiq-davlat-pedagogika-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('Farg‘ona jamoat salomatligi tibbiyot instituti', 'Farg‘ona jamoat salomatligi tibbiyot instituti', 'fargona-jamoat-salomatligi-tibbiyot-instituti', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Farg‘ona politexnika instituti', 'Farg‘ona politexnika instituti', 'fargona-politexnika-instituti', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Geologiya fanlari universiteti', 'Geologiya fanlari universiteti', 'geologiya-fanlari-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Guliston davlat pedagogika instituti', 'Guliston davlat pedagogika instituti', 'guliston-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'sirdaryo'), 'davlat', false),
+('Guliston davlat universiteti', 'Guliston davlat universiteti', 'guliston-davlat-universiteti', (SELECT id FROM regions WHERE slug = 'sirdaryo'), 'davlat', false),
+('"Ipak yo‘li" turizm va madaniy meros xalqaro universiteti', 'IYTVMM', 'ipak-yoli-turizm-va-madaniy-meros-xalqaro-universiteti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Islom Karimov nomidagi Toshkent davlat texnika universiteti', 'IKNTDT', 'islom-karimov-nomidagi-toshkent-davlat-texnika-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Islom Karimov nomidagi Toshkent davlat texnika universiteti Olmaliq filiali', 'IKNTDT', 'islom-karimov-nomidagi-toshkent-davlat-texnika-universiteti-olmaliq-filiali', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('Jamoat xavfsizligi universiteti', 'Jamoat xavfsizligi universiteti', 'jamoat-xavfsizligi-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Jizzax davlat pedagogika universiteti', 'Jizzax davlat pedagogika universiteti', 'jizzax-davlat-pedagogika-universiteti', (SELECT id FROM regions WHERE slug = 'jizzax'), 'davlat', false),
+('Jizzax politexnika instituti', 'Jizzax politexnika instituti', 'jizzax-politexnika-instituti', (SELECT id FROM regions WHERE slug = 'jizzax'), 'davlat', false)
+ON CONFLICT (slug) DO NOTHING;

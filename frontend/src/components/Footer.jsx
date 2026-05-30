@@ -6,17 +6,6 @@ export default function Footer() {
 
   return (
     <footer>
-      <div className="bg-silver py-16">
-        <div className="section-container text-center">
-          <h2 className="heading-2 max-w-2xl mx-auto mb-6">
-            OTM tanlashni {SITE.name} ga qoldiring — siz faqat o&apos;qishga tayyorlaning!
-          </h2>
-          <Link to="/calculator" className="btn-primary">
-            Ball kalkulyatori
-          </Link>
-        </div>
-      </div>
-
       <div className="bg-secondary text-white py-12">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">

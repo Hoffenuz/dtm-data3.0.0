@@ -1,0 +1,28 @@
+INSERT INTO universities (name, short_name, slug, region_id, type, is_top)
+VALUES
+('O‘zbekiston davlat konservatoriyasi Nukus filiali', 'ODKNF', 'ozbekiston-davlat-konservatoriyasi-nukus-filiali', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('O‘zbekiston davlat san’at va madaniyat instituti', 'O‘zbekiston davlat san’at va madaniyat instituti', 'ozbekiston-davlat-sanat-va-madaniyat-instituti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston davlat san’at va madaniyat instituti Nukus filiali', 'ODSVMI', 'ozbekiston-davlat-sanat-va-madaniyat-instituti-nukus-filiali', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('O‘zbekiston davlat sanʼat va madaniyat institutining Farg‘ona mintaqaviy filiali', 'ODSVMI', 'ozbekiston-davlat-san-at-va-madaniyat-institutining-fargona-mintaqaviy-filiali', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('O‘zbekiston davlat xoreografiya akademiyasi', 'O‘zbekiston davlat xoreografiya akademiyasi', 'ozbekiston-davlat-xoreografiya-akademiyasi', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston davlat xoreografiya akademiyasi Urganch filiali', 'ODXAUF', 'ozbekiston-davlat-xoreografiya-akademiyasi-urganch-filiali', (SELECT id FROM regions WHERE slug = 'xorazm'), 'davlat', false),
+('O‘zbekiston jurnalistika va ommaviy kommunikatsiyalar universiteti', 'OJVOKU', 'ozbekiston-jurnalistika-va-ommaviy-kommunikatsiyalar-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston xalqaro islomshunoslik akademiyasi', 'O‘zbekiston xalqaro islomshunoslik akademiyasi', 'ozbekiston-xalqaro-islomshunoslik-akademiyasi', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston-Finlyandiya pedagogika instituti', 'O‘zbekiston-Finlyandiya pedagogika instituti', 'ozbekiston-finlyandiya-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Oziq-ovqat texnologiyasi va muhandisligi xalqaro instituti', 'OTVMXI', 'oziq-ovqat-texnologiyasi-va-muhandisligi-xalqaro-instituti', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Qarshi irrigatsiya va agrotexnologiyalar instituti', 'QIVAI', 'qarshi-irrigatsiya-va-agrotexnologiyalar-instituti', (SELECT id FROM regions WHERE slug = 'qashqadaryo'), 'davlat', false),
+('Qarshi muhandislik-iqtisodiyot instituti', 'Qarshi muhandislik-iqtisodiyot instituti', 'qarshi-muhandislik-iqtisodiyot-instituti', (SELECT id FROM regions WHERE slug = 'qashqadaryo'), 'davlat', false),
+('Qo‘qon davlat pedagogika instituti', 'Qo‘qon davlat pedagogika instituti', 'qoqon-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Qoraqalpog‘iston qishloq xo‘jaligi va agrotexnologiyalar instituti', 'QQXVAI', 'qoraqalpogiston-qishloq-xojaligi-va-agrotexnologiyalar-instituti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Qoraqalpog‘iston tibbiyot instituti', 'Qoraqalpog‘iston tibbiyot instituti', 'qoraqalpogiston-tibbiyot-instituti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Qoraqalpoq davlat universiteti Chimboy fakulteti', 'Qoraqalpoq davlat universiteti Chimboy fakulteti', 'qoraqalpoq-davlat-universiteti-chimboy-fakulteti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Samarqand davlat chet tillar instituti', 'Samarqand davlat chet tillar instituti', 'samarqand-davlat-chet-tillar-instituti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat chet tillar instituti Narpay "Xorijiy tillar" fakulteti', 'SDCTIN', 'samarqand-davlat-chet-tillar-instituti-narpay-xorijiy-tillar-fakulteti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat chet tillar instituti Payariq "Xorijiy tillar" fakulʼteti', 'SDCTIP', 'samarqand-davlat-chet-tillar-instituti-payariq-xorijiy-tillar-fakul-teti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat universiteti Kattaqo‘rg‘on filiali', 'SDUKF', 'samarqand-davlat-universiteti-kattaqorgon-filiali', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat universitetining Agrobiotexnologiyalar va oziq-ovqat xavfsizligi instituti', 'SDUAVO', 'samarqand-davlat-universitetining-agrobiotexnologiyalar-va-oziq-ovqat-xavfsizlig', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat universitetining Denov tadbirkorlik va pedagogika instituti', 'SDUDTV', 'samarqand-davlat-universitetining-denov-tadbirkorlik-va-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'surxondaryo'), 'davlat', false),
+('Samarqand davlat universitetining Urgut filiali', 'Samarqand davlat universitetining Urgut filiali', 'samarqand-davlat-universitetining-urgut-filiali', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat veterinariya meditsinasi, chorvachilik va biotexnologiyalar universiteti', 'SDVMCV', 'samarqand-davlat-veterinariya-meditsinasi-chorvachilik-va-biotexnologiyalar-univ', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Samarqand davlat veterinariya meditsinasi, chorvachilik va biotexnologiyalar universiteti Nukus filiali', 'SDVMCV', 'samarqand-davlat-veterinariya-meditsinasi-chorvachilik-va-biotexnologiyalar-univ-qoraqalpo', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false)
+ON CONFLICT (slug) DO NOTHING;

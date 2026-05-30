@@ -9,6 +9,7 @@ import { buildRobotsTxt, buildSitemapXml } from './sitemap.js';
 import { SITE_NAME, SITE_URL } from '../shared/site.constants.js';
 import { optionalAuth, requireAuth } from './middleware/auth.js';
 import { setupSecurity, corsOptions, sanitizeString, isValidEmail } from './middleware/security.js';
+import { computeScore, matchDirections } from '../shared/dtm-calculator.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -204,59 +205,54 @@ app.get('/api/scores', async (req, res) => {
 });
 
 app.post('/api/calculator', async (req, res) => {
-  const { subjects } = req.body;
-  if (!subjects || typeof subjects !== 'object') {
+  const body = req.body;
+  if (!body || typeof body !== 'object') {
     return res.status(400).json({ error: 'Fanlar ma\'lumotini kiriting' });
   }
 
-  const weights = {
-    matematika: 3.1, fizika: 2.5, kimyo: 2.5, biologiya: 2.5,
-    ona_tili: 2.0, tarix: 2.0, ingliz_tili: 2.0, geografiya: 2.0,
-  };
+  try {
+    const scoreInput = body.subjects
+      ? {
+          mandatoryAnswers: {},
+          profileAnswers: {},
+          primarySubject: null,
+          secondarySubject: null,
+          ...(() => {
+            const subjects = body.subjects;
+            const profileKeys = Object.keys(subjects).filter(
+              (k) => !['ona_tili', 'tarix', 'matematika'].includes(k),
+            );
+            const mandatoryAnswers = {};
+            for (const k of ['ona_tili', 'tarix', 'matematika']) {
+              if (subjects[k]) mandatoryAnswers[k] = subjects[k];
+            }
+            const profileAnswers = {};
+            for (const k of profileKeys) profileAnswers[k] = subjects[k];
+            return {
+              mandatoryAnswers,
+              profileAnswers,
+              primarySubject: profileKeys[0],
+              secondarySubject: profileKeys[1],
+            };
+          })(),
+        }
+      : body;
 
-  let totalScore = 0;
-  const maxPossible = Object.entries(subjects).reduce((sum, [s]) => sum + 100 * (weights[s] || 2.0), 0);
+    const { totalScore, maxScore, message } = computeScore(scoreInput);
 
-  for (const [subject, data] of Object.entries(subjects)) {
-    const weight = weights[subject] || 2.0;
-    const correct = Number(data.correct) || 0;
-    const total = Number(data.total) || 30;
-    totalScore += (correct / total) * 100 * weight;
+    const { data: directions } = await supabaseAdmin
+      .from('directions')
+      .select('name, education_form, universities(name, short_name, slug), admission_scores(grant_score, contract_score)');
+
+    res.json({
+      totalScore,
+      maxScore,
+      matches: matchDirections(directions, totalScore),
+      message,
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
-
-  const normalizedScore = Math.round((totalScore / maxPossible) * 189 * 10) / 10;
-
-  const { data: directions } = await supabaseAdmin
-    .from('directions')
-    .select('name, education_form, universities(name, short_name, slug), admission_scores(grant_score, contract_score)');
-
-  const matches = (directions || [])
-    .filter((d) => {
-      const s = d.admission_scores?.[0];
-      return (s?.grant_score && s.grant_score <= normalizedScore)
-        || (s?.contract_score && s.contract_score <= normalizedScore);
-    })
-    .map((d) => ({
-      name: d.universities?.name,
-      short_name: d.universities?.short_name,
-      slug: d.universities?.slug,
-      direction_name: d.name,
-      education_form: d.education_form,
-      grant_score: d.admission_scores?.[0]?.grant_score,
-      contract_score: d.admission_scores?.[0]?.contract_score,
-    }))
-    .slice(0, 20);
-
-  res.json({
-    totalScore: normalizedScore,
-    maxScore: 189,
-    matches,
-    message: normalizedScore >= 140
-      ? 'Tabriklaymiz! Siz ko\'plab OTMlarga kirish imkoniyatiga egasiz.'
-      : normalizedScore >= 100
-        ? 'Kontrakt asosida ko\'plab yo\'nalishlarga ariza berishingiz mumkin.'
-        : 'Ballaringizni oshirish uchun qo\'shimcha tayyorgarlik tavsiya etiladi.',
-  });
 });
 
 app.get('/api/news', async (req, res) => {

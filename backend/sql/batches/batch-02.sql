@@ -1,0 +1,28 @@
+INSERT INTO universities (name, short_name, slug, region_id, type, is_top)
+VALUES
+('Kamoliddin Behzod nomidagi Milliy rassomlik va dizayn instituti', 'KBNMRV', 'kamoliddin-behzod-nomidagi-milliy-rassomlik-va-dizayn-instituti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Milliy estrada san''ati instituti', 'Milliy estrada san''ati instituti', 'milliy-estrada-sanati-instituti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universiteti', 'MUNOMU', 'mirzo-ulugbek-nomidagi-ozbekiston-milliy-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Mirzo Ulug‘bek nomidagi O‘zbekiston Milliy universitetining Jizzax filiali', 'MUNOMU', 'mirzo-ulugbek-nomidagi-ozbekiston-milliy-universitetining-jizzax-filiali', (SELECT id FROM regions WHERE slug = 'jizzax'), 'davlat', false),
+('Mirzo Ulug''bek nomidagi Samarqand davlat arxitektura-qurilish universiteti', 'MUNSDA', 'mirzo-ulugbek-nomidagi-samarqand-davlat-arxitektura-qurilish-universiteti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti', 'MANTAT', 'muhammad-al-xorazmiy-nomidagi-toshkent-axborot-texnologiyalari-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti Nukus filiali', 'MANTAT', 'muhammad-al-xorazmiy-nomidagi-toshkent-axborot-texnologiyalari-universiteti-nuku', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Namangan davlat chet tillari instituti', 'Namangan davlat chet tillari instituti', 'namangan-davlat-chet-tillari-instituti', (SELECT id FROM regions WHERE slug = 'namangan'), 'davlat', false),
+('Namangan davlat pedagogika instituti', 'Namangan davlat pedagogika instituti', 'namangan-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'namangan'), 'davlat', false),
+('Namangan muhandislik-qurilish instituti', 'Namangan muhandislik-qurilish instituti', 'namangan-muhandislik-qurilish-instituti', (SELECT id FROM regions WHERE slug = 'namangan'), 'davlat', false),
+('Namangan muhandislik-texnologiya instituti', 'Namangan muhandislik-texnologiya instituti', 'namangan-muhandislik-texnologiya-instituti', (SELECT id FROM regions WHERE slug = 'namangan'), 'davlat', false),
+('Namangan to‘qimachilik sanoati instituti', 'Namangan to‘qimachilik sanoati instituti', 'namangan-toqimachilik-sanoati-instituti', (SELECT id FROM regions WHERE slug = 'namangan'), 'davlat', false),
+('Navoiy davlat konchilik instituti Nukus filiali', 'Navoiy davlat konchilik instituti Nukus filiali', 'navoiy-davlat-konchilik-instituti-nukus-filiali', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Navoiy davlat konchilik va texnologiyalar universiteti', 'NDKVTU', 'navoiy-davlat-konchilik-va-texnologiyalar-universiteti', (SELECT id FROM regions WHERE slug = 'navoiy'), 'davlat', false),
+('Navoiy davlat pedagogika instituti', 'Navoiy davlat pedagogika instituti', 'navoiy-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'navoiy'), 'davlat', false),
+('Nukus davlat pedagogika instituti Ellikqal''a fakulteti', 'NDPIEF', 'nukus-davlat-pedagogika-instituti-ellikqala-fakulteti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Oliy sport mahorati instituti', 'Oliy sport mahorati instituti', 'oliy-sport-mahorati-instituti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('O‘zbek milliy musiqa sanʼati instituti', 'O‘zbek milliy musiqa sanʼati instituti', 'ozbek-milliy-musiqa-san-ati-instituti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston davlat jismoniy tarbiya va sport universiteti', 'ODJTVS', 'ozbekiston-davlat-jismoniy-tarbiya-va-sport-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('O‘zbekiston davlat jismoniy tarbiya va sport universiteti Nukus filiali', 'ODJTVS', 'ozbekiston-davlat-jismoniy-tarbiya-va-sport-universiteti-nukus-filiali', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('O‘zbekiston davlat konservatoriyasi', 'O‘zbekiston davlat konservatoriyasi', 'ozbekiston-davlat-konservatoriyasi', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston Respublikasi Davlat soliq qo‘mitasi huzuridagi Fiskal institut', 'ORDSQH', 'ozbekiston-respublikasi-davlat-soliq-qomitasi-huzuridagi-fiskal-institut', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston Respublikasi Huquqni muhofaza qilish akademiyasi', 'ORHMQA', 'ozbekiston-respublikasi-huquqni-muhofaza-qilish-akademiyasi', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston davlat jahon tillari universiteti', 'O‘zbekiston davlat jahon tillari universiteti', 'ozbekiston-davlat-jahon-tillari-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('O‘zbekiston davlat jismoniy tarbiya va sport universiteti Farg‘ona filiali', 'ODJTVS', 'ozbekiston-davlat-jismoniy-tarbiya-va-sport-universiteti-fargona-filiali', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false)
+ON CONFLICT (slug) DO NOTHING;

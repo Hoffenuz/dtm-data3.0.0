@@ -27,6 +27,7 @@ export default function UniversityDetail() {
   const { slug } = useParams();
   const [uni, setUni] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [formFilter, setFormFilter] = useState('kunduzgi');
 
   useEffect(() => {
     api.getUniversity(slug)
@@ -43,6 +44,10 @@ export default function UniversityDetail() {
 
   if (loading) return <div className="section-container py-20 text-center text-grey">Yuklanmoqda...</div>;
   if (!uni) return <div className="section-container py-20 text-center text-grey">OTM topilmadi</div>;
+
+  const filteredDirections = formFilter
+    ? uni.directions.filter((d) => d.education_form === formFilter)
+    : uni.directions;
 
   return (
     <div className="py-12">
@@ -72,43 +77,73 @@ export default function UniversityDetail() {
           )}
         </div>
 
-        <h2 className="heading-3 mb-6">Yo&apos;nalishlar va kirish ballari</h2>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+          <h2 className="heading-3">Yo&apos;nalishlar va kirish ballari</h2>
+          {uni.directions.length > 0 && (
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <label htmlFor="form-filter" className="text-sm text-grey whitespace-nowrap">
+                Ta&apos;lim shakli:
+              </label>
+              <select
+                id="form-filter"
+                value={formFilter}
+                onChange={(e) => setFormFilter(e.target.value)}
+                className="px-4 py-2.5 border border-grey-blue rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white min-w-[160px]"
+              >
+                {Object.entries(formLabels).map(([k, v]) => (
+                  <option key={k} value={k}>{v}</option>
+                ))}
+                <option value="">Barchasi</option>
+              </select>
+            </div>
+          )}
+        </div>
 
         {uni.directions.length === 0 ? (
           <p className="text-grey">Yo&apos;nalishlar ma&apos;lumoti hozircha mavjud emas.</p>
+        ) : filteredDirections.length === 0 ? (
+          <p className="text-grey">
+            {formLabels[formFilter]} shaklida yo&apos;nalishlar topilmadi. Boshqa filtrni tanlang.
+          </p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-secondary text-white">
-                  <th className="px-4 py-3 text-sm font-medium">Yo&apos;nalish</th>
-                  <th className="px-4 py-3 text-sm font-medium">Fakultet</th>
-                  <th className="px-4 py-3 text-sm font-medium">Ta&apos;lim shakli</th>
-                  <th className="px-4 py-3 text-sm font-medium">Til</th>
-                  <th className="px-4 py-3 text-sm font-medium">Grant</th>
-                  <th className="px-4 py-3 text-sm font-medium">Kontrakt</th>
-                  <th className="px-4 py-3 text-sm font-medium">Kvota</th>
-                </tr>
-              </thead>
-              <tbody>
-                {uni.directions.map((d) => (
-                  <tr key={d.id} className="border-b border-grey-blue/30 hover:bg-silver/50">
-                    <td className="px-4 py-3 text-sm font-medium">{d.name}</td>
-                    <td className="px-4 py-3 text-sm text-grey">{d.faculty}</td>
-                    <td className="px-4 py-3 text-sm">{formLabels[d.education_form]}</td>
-                    <td className="px-4 py-3 text-sm">{langLabels[d.education_language]}</td>
-                    <td className="px-4 py-3 text-sm font-semibold text-primary">
-                      {d.grant_score ?? '—'}
-                    </td>
-                    <td className="px-4 py-3 text-sm font-semibold text-info">
-                      {d.contract_score ?? '—'}
-                    </td>
-                    <td className="px-4 py-3 text-sm">{d.quota}</td>
+          <>
+            <p className="text-sm text-grey mb-4">
+              {filteredDirections.length} ta yo&apos;nalish
+              {formFilter && ` · ${formLabels[formFilter]}`}
+            </p>
+            <div className="overflow-x-auto rounded-lg card-shadow">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-secondary text-white">
+                    <th className="px-4 py-3 text-sm font-medium">Yo&apos;nalish</th>
+                    <th className="px-4 py-3 text-sm font-medium">Fakultet</th>
+                    <th className="px-4 py-3 text-sm font-medium">Ta&apos;lim shakli</th>
+                    <th className="px-4 py-3 text-sm font-medium">Til</th>
+                    <th className="px-4 py-3 text-sm font-medium">Grant</th>
+                    <th className="px-4 py-3 text-sm font-medium">Kontrakt</th>
+                    <th className="px-4 py-3 text-sm font-medium">Kvota</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {filteredDirections.map((d, i) => (
+                    <tr key={d.id} className={`border-b border-grey-blue/30 hover:bg-silver/50 ${i % 2 === 0 ? 'bg-white' : 'bg-silver/30'}`}>
+                      <td className="px-4 py-3 text-sm font-medium">{d.name}</td>
+                      <td className="px-4 py-3 text-sm text-grey">{d.faculty}</td>
+                      <td className="px-4 py-3 text-sm">{formLabels[d.education_form]}</td>
+                      <td className="px-4 py-3 text-sm">{langLabels[d.education_language]}</td>
+                      <td className="px-4 py-3 text-sm font-semibold text-primary">
+                        {d.grant_score ?? '—'}
+                      </td>
+                      <td className="px-4 py-3 text-sm font-semibold text-info">
+                        {d.contract_score ?? '—'}
+                      </td>
+                      <td className="px-4 py-3 text-sm">{d.quota}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
 
         <p className="text-xs text-grey-light mt-4">

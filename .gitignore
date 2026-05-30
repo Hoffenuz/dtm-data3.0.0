@@ -6,6 +6,8 @@ frontend/node_modules/
 # Build output
 frontend/dist/
 dist/
+dtm-admin/dist/
+dtm-admin/node_modules/
 
 # Environment
 .env
@@ -13,7 +15,8 @@ dist/
 backend/.env
 frontend/.env
 frontend/.env.local
-frontend/.env.production
+dtm-admin/.env
+dtm-admin/.env.local
 
 # Logs
 *.log

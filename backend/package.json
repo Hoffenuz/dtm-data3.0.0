@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node --watch server.js",
     "start": "node server.js",
-    "generate:seo": "node scripts/generate-seo.js"
+    "generate:seo": "node scripts/generate-seo.js",
+    "seed:universities": "node scripts/seed-universities.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

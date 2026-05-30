@@ -1,0 +1,28 @@
+INSERT INTO universities (name, short_name, slug, region_id, type, is_top)
+VALUES
+('Samarqand davlat veterinariya meditsinasi, chorvachilik va biotexnologiyalar universiteti Toshkent filiali', 'SDVMCV', 'samarqand-davlat-veterinariya-meditsinasi-chorvachilik-va-biotexnologiyalar-univ-toshkent-', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('Samarqand iqtisodiyot va servis instituti', 'Samarqand iqtisodiyot va servis instituti', 'samarqand-iqtisodiyot-va-servis-instituti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Shahrisabz davlat pedagogika instituti', 'Shahrisabz davlat pedagogika instituti', 'shahrisabz-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'qashqadaryo'), 'davlat', false),
+('Shahrisabz davlat pedagogika instituti', 'Shahrisabz davlat pedagogika instituti', 'shahrisabz-davlat-pedagogika-instituti-samarqand', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Sharof Rashidov nomidagi Samarqand davlat universiteti', 'SRNSDU', 'sharof-rashidov-nomidagi-samarqand-davlat-universiteti', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Termiz agrotexnologiyalar va innovatsion rivojlanish instituti', 'TAVIRI', 'termiz-agrotexnologiyalar-va-innovatsion-rivojlanish-instituti', (SELECT id FROM regions WHERE slug = 'surxondaryo'), 'davlat', false),
+('Termiz davlat pedagogika instituti', 'Termiz davlat pedagogika instituti', 'termiz-davlat-pedagogika-instituti', (SELECT id FROM regions WHERE slug = 'surxondaryo'), 'davlat', false),
+('Termiz davlat universiteti', 'Termiz davlat universiteti', 'termiz-davlat-universiteti', (SELECT id FROM regions WHERE slug = 'surxondaryo'), 'davlat', false),
+('Toshkent arxitektura-qurilish universiteti', 'Toshkent arxitektura-qurilish universiteti', 'toshkent-arxitektura-qurilish-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Toshkent axborot texnologiyalari universiteti Farg‘ona filiali', 'TATUFF', 'toshkent-axborot-texnologiyalari-universiteti-fargona-filiali', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Toshkent axborot texnologiyalari universiteti Nurafshon filiali', 'TATUNF', 'toshkent-axborot-texnologiyalari-universiteti-nurafshon-filiali', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('Toshkent axborot texnologiyalari universiteti Qarshi filiali', 'TATUQF', 'toshkent-axborot-texnologiyalari-universiteti-qarshi-filiali', (SELECT id FROM regions WHERE slug = 'qashqadaryo'), 'davlat', false),
+('Toshkent axborot texnologiyalari universiteti Samarqand filiali', 'TATUSF', 'toshkent-axborot-texnologiyalari-universiteti-samarqand-filiali', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Toshkent axborot texnologiyalari universiteti Urganch filiali', 'TATUUF', 'toshkent-axborot-texnologiyalari-universiteti-urganch-filiali', (SELECT id FROM regions WHERE slug = 'xorazm'), 'davlat', false),
+('Toshkent davlat agrar universiteti', 'Toshkent davlat agrar universiteti', 'toshkent-davlat-agrar-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-vil'), 'davlat', false),
+('Toshkent davlat agrar universiteti Samarqand filiali', 'TDAUSF', 'toshkent-davlat-agrar-universiteti-samarqand-filiali', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Toshkent davlat iqtisodiyot universiteti Andijon fakulteti', 'TDIUAF', 'toshkent-davlat-iqtisodiyot-universiteti-andijon-fakulteti', (SELECT id FROM regions WHERE slug = 'andijon'), 'davlat', false),
+('Toshkent davlat iqtisodiyot universiteti Samarqand filiali', 'TDIUSF', 'toshkent-davlat-iqtisodiyot-universiteti-samarqand-filiali', (SELECT id FROM regions WHERE slug = 'samarqand'), 'davlat', false),
+('Toshkent davlat iqtisodiyot universiteti To‘rtko‘l fakulteti', 'TDIUTF', 'toshkent-davlat-iqtisodiyot-universiteti-tortkol-fakulteti', (SELECT id FROM regions WHERE slug = 'qoraqalpogiston'), 'davlat', false),
+('Toshkent davlat pedagogika universiteti', 'Toshkent davlat pedagogika universiteti', 'toshkent-davlat-pedagogika-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Toshkent davlat sharqshunoslik universiteti', 'Toshkent davlat sharqshunoslik universiteti', 'toshkent-davlat-sharqshunoslik-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Toshkent davlat stomatologiya instituti', 'Toshkent davlat stomatologiya instituti', 'toshkent-davlat-stomatologiya-instituti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false),
+('Toshkent davlat texnika universitetining Qo‘qon filiali', 'TDTUQF', 'toshkent-davlat-texnika-universitetining-qoqon-filiali', (SELECT id FROM regions WHERE slug = 'fargona'), 'davlat', false),
+('Toshkent davlat texnika universitetining Termiz filiali', 'TDTUTF', 'toshkent-davlat-texnika-universitetining-termiz-filiali', (SELECT id FROM regions WHERE slug = 'surxondaryo'), 'davlat', false),
+('Toshkent davlat transport universiteti', 'Toshkent davlat transport universiteti', 'toshkent-davlat-transport-universiteti', (SELECT id FROM regions WHERE slug = 'toshkent-sh'), 'davlat', false)
+ON CONFLICT (slug) DO NOTHING;

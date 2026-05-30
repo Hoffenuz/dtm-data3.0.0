@@ -13,6 +13,7 @@
     "generate:seo": "npm run generate:seo --prefix backend",
     "build": "npm run generate:seo && node scripts/prepare-frontend-env.mjs && npm run build --prefix frontend",
     "build:cloudflare": "npm run generate:seo && node scripts/prepare-frontend-env.mjs && npm run build --prefix frontend",
+    "seed:universities": "npm run seed:universities --prefix backend",
     "start": "npm run start --prefix backend",
     "start:prod": "npm run build && npm run start"
   },

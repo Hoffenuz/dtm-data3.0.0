@@ -50,4 +50,17 @@
   .card-shadow {
     box-shadow: 0 2px 4px rgba(171, 190, 209, 0.4);
   }
+
+  .article-content {
+    @apply text-left;
+  }
+
+  .article-lead {
+    @apply text-lg lg:text-xl font-medium text-secondary leading-relaxed mb-8 pb-8 border-b border-grey-blue/30;
+  }
+
+  .article-body {
+    @apply text-base lg:text-[17px] leading-[1.8] text-grey whitespace-pre-line;
+    max-width: 72ch;
+  }
 }

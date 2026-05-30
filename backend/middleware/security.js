@@ -2,12 +2,20 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { SITE_URL } from '../../shared/site.constants.js';
 
+const port = process.env.PORT || 3001;
+
 const allowedOrigins = [
   SITE_URL,
   'http://localhost:5173',
   'http://localhost:4173',
   'http://127.0.0.1:5173',
+  `http://localhost:${port}`,
+  `http://127.0.0.1:${port}`,
 ];
+
+function isLocalOrigin(origin) {
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+}
 
 export function setupSecurity(app) {
   app.use(helmet({
@@ -42,6 +50,8 @@ export function corsOptions() {
   return {
     origin(origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else if (process.env.NODE_ENV !== 'production' && isLocalOrigin(origin)) {
         callback(null, true);
       } else {
         callback(new Error('CORS ruxsat etilmagan'));
